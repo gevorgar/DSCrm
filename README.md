@@ -1,0 +1,3 @@
+# DSCRM project
+
+django project
