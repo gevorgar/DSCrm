@@ -3,7 +3,7 @@ from datetime import datetime
 
 from clients.models import Client
 from devices.models import DeviceInField
-from services.models import Service
+# from services.models import ServicePrice
 
 
 class Order(models.Model):
@@ -25,7 +25,7 @@ class Order(models.Model):
     created_dt = models.DateTimeField(verbose_name="Создано", auto_now_add=True)
     last_updated_dt = models.DateTimeField(verbose_name="Последнее изменение", blank=True, null=True)
     order_status = models.TextField(verbose_name="Статус заказа", choices=statuses)
-    services = models.ManyToManyField(Service, through='ServicePrice', verbose_name="Услуга")
+    # services = models.ManyToManyField('ServicePrice', through='Service', verbose_name="Услуга")
 
     def __str__(self):
         return f"Заявка №{self.id} для {self.device}"

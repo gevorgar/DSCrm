@@ -1,4 +1,59 @@
-/.idea/
-/venv/
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
 
+# C extensions
+*.so
 
+# Distribution / packaging
+dist/
+build/
+eggs/
+*.egg-info/
+*.egg
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# Logs
+*.log
+
+# Database
+db.sqlite3
+
+# Local development settings
+*.settings.local
+
+# Media files (uploads)
+media/
+
+# Compiled Python files
+*.pyc
+
+# Compiled translations
+*.mo
+
+# Temporary files
+*.tmp
+
+# Miscellaneous
+.DS_Store
+Thumbs.db
+
+# IDE-specific files and folders
+.idea/
+.vscode/
+*.pyproj
+*.sln
+
+# Compiled JavaScript
+*.js.map
+
+# Compiled CSS
+*.css.map
+*.idea
+# Node.js dependencies
+node_modules/

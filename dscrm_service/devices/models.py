@@ -8,9 +8,9 @@ class Device(models.Model):
         verbose_name = "Устройство"
         verbose_name_plural = "Устройства"
 
-    group = models.CharField(verbose_name="Группа")
-    brand = models.CharField(verbose_name="Бренд")
-    model = models.CharField(verbose_name="Модель")
+    group = models.CharField(verbose_name="Группа", max_length=10)
+    brand = models.CharField(verbose_name="Бренд", max_length=10)
+    model = models.CharField(verbose_name="Модель", max_length=10)
 
 
     def __str__(self):
