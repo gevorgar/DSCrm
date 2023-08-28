@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 
 def view_orders(request):
-    return HttpResponse('Таблица заявок')
+    return HttpResponse('Таблица заявок ')
 
 
 def create_order(request):
