@@ -1,8 +1,10 @@
 from django.db import models
 from datetime import datetime
+from django.urls import reverse
 
 from clients.models import Client
 from devices.models import DeviceInField
+
 # from services.models import ServicePrice
 
 
@@ -33,3 +35,6 @@ class Order(models.Model):
     def save(self, *args, **kwargs):
         self.last_updated_dt = datetime.now()
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('order', kwargs={'order_id': self.pk})
