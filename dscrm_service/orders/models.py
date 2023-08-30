@@ -27,6 +27,7 @@ class Order(models.Model):
     created_dt = models.DateTimeField(verbose_name="Создано", auto_now_add=True)
     last_updated_dt = models.DateTimeField(verbose_name="Последнее изменение", blank=True, null=True)
     order_status = models.TextField(verbose_name="Статус заказа", choices=statuses)
+    price = models.CharField(verbose_name='Ориентировочная стоимость', blank=True, null=True)
     # services = models.ManyToManyField('ServicePrice', through='Service', verbose_name="Услуга")
 
     def __str__(self):

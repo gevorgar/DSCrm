@@ -1,25 +1,28 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.views.generic import ListView, DetailView, CreateView
+from django.urls import reverse_lazy
 
-from .models import *
 from .forms import *
 
 
-def view_orders(request):
-    orders = Order.objects.all()
-    return render(request, 'orders/orders.html', {'orders': orders, 'title': 'Таблица заявок'})
+class OrderList(ListView):
+    model = Order
+    template_name = 'orders/orders.html'
+    context_object_name = 'orders'
+    extra_context = {'title': 'Таблица заявок'}
 
 
-def create_order(request):
-    if request.method == 'POST':
-        form = OrderCreateForm(request.POST)
-        if form.is_valid():
-            print(form.cleaned_data)
-            form.save()
-            return redirect('orders')
-    else:
-        form = OrderCreateForm()
-    return render(request, 'orders/create_order.html', {'form': form, 'title': 'Создание заявки'})
+class ShowOrder(DetailView):
+    model = Order
+    template_name = 'orders/order_info.html'
+    pk_url_kwarg = 'order_id'
+    context_object_name = 'order'
 
-def edit_order(request, order_id):
-    return HttpResponse(f'Редактирование заявки {order_id}')
+
+class CreateOrder(CreateView):
+    form_class = OrderCreateForm
+    template_name = 'orders/create_order.html'
+    extra_context = {'title': 'Создание Заявки'}
+    success_url = reverse_lazy('orders')
+
+
+
