@@ -6,7 +6,7 @@ from .forms import SignUpForm
 
 
 class UserView(DetailView):
-    template_name = 'profile.html'
+    template_name = 'users/profile.html'
 
     def get_object(self):
         return self.request.user
@@ -26,4 +26,4 @@ def signup(request):
             return redirect('users:profile')
     else:
         form = SignUpForm()
-    return render(request, 'signup.html', {'form': form})
+    return render(request, 'users/signup.html', {'form': form})
