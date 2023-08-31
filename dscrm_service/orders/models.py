@@ -1,8 +1,10 @@
 from django.db import models
 from datetime import datetime
+from django.urls import reverse
 
 from clients.models import Client
 from devices.models import DeviceInField
+
 # from services.models import ServicePrice
 
 
@@ -25,6 +27,7 @@ class Order(models.Model):
     created_dt = models.DateTimeField(verbose_name="Создано", auto_now_add=True)
     last_updated_dt = models.DateTimeField(verbose_name="Последнее изменение", blank=True, null=True)
     order_status = models.TextField(verbose_name="Статус заказа", choices=statuses)
+    price = models.CharField(verbose_name='Ориентировочная стоимость', blank=True, null=True)
     # services = models.ManyToManyField('ServicePrice', through='Service', verbose_name="Услуга")
 
     def __str__(self):
@@ -33,3 +36,6 @@ class Order(models.Model):
     def save(self, *args, **kwargs):
         self.last_updated_dt = datetime.now()
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('order', kwargs={'order_id': self.pk})
