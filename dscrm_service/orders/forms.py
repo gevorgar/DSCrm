@@ -6,5 +6,6 @@ class OrderCreateForm(forms.ModelForm):
        model = Order
        fields = ('client', 'device', 'order_description', 'price')
        widgets = {
-           'order_description': forms.TextInput(attrs={'class': 'form-label', 'for': 'inputEmailAddres'}),
+           'order_description': forms.TextInput(attrs={'class': 'form-control', 'type': 'text'}),
+           'price': forms.NumberInput(attrs={'class': 'form-control', 'type': 'text'}),
        }

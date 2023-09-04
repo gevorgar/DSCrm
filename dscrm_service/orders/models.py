@@ -5,7 +5,7 @@ from django.urls import reverse
 from clients.models import Client
 from devices.models import DeviceInField
 
-# from services.models import ServicePrice
+# from services.models import ServicePrice, Service
 
 
 class Order(models.Model):
