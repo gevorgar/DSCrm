@@ -1,14 +1,14 @@
 from django.contrib import admin
 
-from .models import Service, ServicePrice
+from .models import Service, ServiceItem
 
 
 class ServiceAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'price', 'warranty')
+    list_display = ('id', 'name', 'warranty')
 
-class ServicePriceAdmin(admin.ModelAdmin):
+class ServiceItemAdmin(admin.ModelAdmin):
     list_display = ['id','order','price']
 
 
 admin.site.register(Service, ServiceAdmin)
-admin.site.register(ServicePrice, ServicePriceAdmin)
+admin.site.register(ServiceItem, ServiceItemAdmin)
