@@ -21,7 +21,7 @@ class ShowOrder(DetailView):
 
 
 class CreateOrder(CreateView):
-    form_class = OrderCreateForm
+    form_class = OrderForm
     template_name = 'orders/create_order.html'
     extra_context = {'title': 'Создание Заявки'}
     success_url = reverse_lazy('orders')
@@ -30,11 +30,10 @@ def create_order(request):
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
-            print(form.cleaned_data)
-            print(Client.objects.all())
             client_name = form.cleaned_data['client_name']
             client_phone = form.cleaned_data['client_phone']
-            client = Client.objects.create(client_name=client_name, client_phone=client_phone)
+            client = Client.objects.filter(client_phone=client_phone).first()
+            client = client or Client.objects.create(client_name=client_name, client_phone=client_phone)
             device_group = form.cleaned_data['device_group']
             device_brand = form.cleaned_data['device_brand']
             device_model = form.cleaned_data['device_model']
@@ -43,7 +42,6 @@ def create_order(request):
             order_description = form.cleaned_data['order_description']
             price = form.cleaned_data['price']
             order = Order.objects.create(client=client, device=device, order_description=order_description, order_status='open', price=price)
-
             return HttpResponseRedirect('/orders/')
     else:
         form = OrderForm
