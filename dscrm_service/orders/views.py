@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 
@@ -48,4 +48,9 @@ def create_order(request):
     return render(request, 'orders/create_order.html', {'form': form})
 
 
-
+class OrderUpdate(UpdateView):
+    model = Order
+    template_name = 'orders/order_info.html'
+    extra_context = {'title': 'Просмотр и редактирование заказа'}
+    fields = ['client', 'device', 'order_description', 'order_status', 'price', 'services']
+    success_url = reverse_lazy('orders')

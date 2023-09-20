@@ -12,7 +12,8 @@
 <div class="col-xl-6 mx-auto">
     <div class="card">
         <div class="card-body p-4">
-            <h5 class="mb-4">Создание нового заказа</h5>
+            <h5 class="mb-4">Просмотр и редактирование заказа</h5>
+            <h6 class="mb-4">Дата создания {{order.created_dt}}</h6>
             <form class="row g-3" method="post">
                 <div> {{form.not_field_errors}}</div>
                 {% csrf_token %}
@@ -33,16 +34,6 @@
         </div>
     </div>
 </div>
-
-
-
-<p>{{order.created_dt}}</p>
-<p>{{order.client}}</p>
-<p>{{order.device}}</p>
-<p>{{order.order_description}}</p>
-<p>{{order.order_status}}</p>
-<p>{{order.price}}</p>
-
 {% endblock %}
 </body>
 </html>
