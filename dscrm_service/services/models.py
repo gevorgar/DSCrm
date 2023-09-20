@@ -11,19 +11,18 @@ class Service(models.Model):
         verbose_name_plural = "Услуги"
 
     name = models.CharField(verbose_name="Наименование услуги", max_length=20)
-    price = models.IntegerField(verbose_name="Стоимость услуги")
     warranty = models.IntegerField(verbose_name='Гарантия/дней')
 
     def __str__(self):
         return f"{self.name}"
 
-class ServicePrice(models.Model):
+class ServiceItem(models.Model):
 
     """Добавляемые услуги"""
 
     class Meta():
-        verbose_name = 'Стоимость услуги'
-        verbose_name_plural = 'Стоимости услуг'
+        verbose_name = 'Услуга в заказе'
+        verbose_name_plural = 'Услуги в заказе'
         ordering = ['id']
 
     service = models.ForeignKey(Service, on_delete=models.CASCADE, verbose_name='Услуга')

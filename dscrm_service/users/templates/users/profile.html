@@ -1,16 +1,17 @@
 <!DOCTYPE html>
+{% extends 'orders/base.html' %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
+{% block content %}
 <h1>My profile</h1>
 <p>
   {{ object }}
 </p>
 <a href="{% url 'users:logout' %}">Logout</a>
-
+{% endblock %}
 </body>
 </html>
