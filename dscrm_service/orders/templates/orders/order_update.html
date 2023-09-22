@@ -12,11 +12,11 @@
 <div class="col-xl-6 mx-auto">
     <div class="card">
         <div class="card-body p-4">
-            <h5 class="mb-4">Просмотр заказа</h5>
+            <h5 class="mb-4">Просмотр и редактирование заказа</h5>
             <h6 class="mb-4">Дата создания {{order.created_dt}}</h6>
             <form class="row g-3" method="post">
                 <div> {{form.not_field_errors}}</div>
-                  {% csrf_token %}
+                {% csrf_token %}
                 {% for f in form %}
                 <div class="col-md-12">
                     <label for="input1" class="form-label">{{f.label}}</label>
@@ -24,16 +24,10 @@
                     <div>{{f.errors}}</div>
                 </div>
                 {% endfor %}
-                <p>{{order.client}}</p>
-                <p>{{order.device}}</p>
-                <p>{{order.order_description}}</p>
-                <p>{{order.order_status}}</p>
-                <p>{{order.price}}</p>
                 <div class="col-md-12">
                     <div class="d-md-flex d-grid align-items-center gap-3">
                         <button type="submit" class="btn btn-primary px-4">Сохранить</button>
-                        <button onclick="javascript:history.back()" type="reset" class="btn btn-light px-4">Назад
-                        </button>
+                        <button onclick="javascript:history.back()" type="reset" class="btn btn-light px-4">Назад</button>
                     </div>
                 </div>
             </form>

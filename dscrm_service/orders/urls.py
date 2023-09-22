@@ -5,5 +5,7 @@ from .views import *
 urlpatterns = [
     path('', OrderList.as_view(), name='orders' ),
     path('create/', create_order, name='order_create'),
-    path('<int:order_id>/', ShowOrder.as_view(), name='order')
+    path('<int:pk>/', ShowOrder.as_view(), name='order'),
+    path('<int:pk>/update', OrderUpdate.as_view(), name='order-update'),
+    path('<int:pk>/delete', OrderDelete.as_view(), name='order-delete')
 ]
