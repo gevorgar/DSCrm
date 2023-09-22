@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 
@@ -13,13 +13,11 @@ class OrderList(ListView):
     extra_context = {'title': 'Таблица заявок'}
 
 
-class ShowOrder(UpdateView):
+class ShowOrder(DetailView):
     model = Order
     template_name = 'orders/order_info.html'
+    pk_url_kwarg = 'order_id'
     context_object_name = 'order'
-    extra_context = {'title': 'Просмотр заказа'}
-    fields = ['services']
-    success_url = reverse_lazy('orders')
 
 
 class CreateOrder(CreateView):
@@ -50,15 +48,4 @@ def create_order(request):
     return render(request, 'orders/create_order.html', {'form': form})
 
 
-class OrderUpdate(UpdateView):
-    model = Order
-    template_name = 'orders/order_update.html'
-    extra_context = {'title': 'Просмотр и редактирование заказа'}
-    form_class = OrderUpdateForm
-    # fields = ['client', 'device', 'order_description', 'order_status', 'price', 'services']
-    success_url = reverse_lazy('orders')
 
-class OrderDelete(DeleteView):
-    model = Order
-    template_name = 'orders/order_delete.html'
-    success_url = reverse_lazy('orders')

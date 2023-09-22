@@ -37,7 +37,7 @@
 										<th>Устройство</th>
                                         <th>Неисправность</th>
 										<th>Дата</th>
-										<th>Действия</th>
+										<th>Actions</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -49,7 +49,7 @@
 													<input class="form-check-input me-3" type="checkbox" value="" aria-label="...">
 												</div>
 												<div class="ms-2">
-													<h6 class="mb-0 font-14"><a href="{{order.get_absolute_url}}">#{{order.pk}}</a></h6>
+													<h6 class="mb-0 font-14"><a href="{{order.get_absolute_url}}">#{{order.id}}</a></h6>
 												</div>
 											</div>
 										</td>
@@ -60,8 +60,8 @@
 										<td>{{order.created_dt}}</td>
 										<td>
 											<div class="d-flex order-actions">
-												<a href="{% url 'order-update' order.id %}" class=""><i class='bx bxs-edit'></i></a>
-												<a href="{% url 'order-delete' order.id %}" class="ms-3"><i class='bx bxs-trash'></i></a>
+												<a href="javascript:;" class=""><i class='bx bxs-edit'></i></a>
+												<a href="javascript:;" class="ms-3"><i class='bx bxs-trash'></i></a>
 											</div>
 										</td>
 									</tr>
