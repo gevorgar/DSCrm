@@ -2,8 +2,9 @@ from django import forms
 from .models import *
 from devices.models import *
 from  clients.models import *
+from  services.models import *
 
-class OrderCreateForm(forms.ModelForm):
+class OrderUpdateForm(forms.ModelForm):
    class Meta:
        model = Order
        fields = ('client', 'device', 'order_description', 'price')
