@@ -3,7 +3,8 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 
-from .forms import *
+from .forms import OrderForm, OrderUpdateForm
+from .models import Order, Client, Device
 
 
 class OrderList(ListView):
