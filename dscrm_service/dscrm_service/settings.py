@@ -9,18 +9,22 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+#Loading ENV
+env_path = Path('.')/'.env'
+load_dotenv(dotenv_path=env_path)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-_3!)hm)_$q3cdxoq5mr(2s#wh+@i=)_d%13su0=i^b&+wj6^)u'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -81,15 +85,17 @@ TEMPLATES = [
 WSGI_APPLICATION = 'dscrm_service.wsgi.application'
 
 
+
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'dscrm_db',
-        'USER': 'postgres',
-        'PASSWORD': 'kali',
+        'USER': os.getenv('BD_LOGIN'),
+        'PASSWORD': os.getenv('BD_PASS'),
         'HOST': 'localhost',
         'PORT': '5432'
     }
