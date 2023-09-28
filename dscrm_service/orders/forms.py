@@ -1,8 +1,8 @@
 from django import forms
-from .models import *
-from devices.models import *
-from  clients.models import *
-from  services.models import *
+
+from devices.models import Group, Brand, Model
+
+from  services.models import Order
 
 class OrderUpdateForm(forms.ModelForm):
    class Meta:
