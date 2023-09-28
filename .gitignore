@@ -17,7 +17,7 @@ eggs/
 venv/
 env/
 ENV/
-
+.env
 # Logs
 *.log
 
