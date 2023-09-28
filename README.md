@@ -1,6 +1,6 @@
 # DSCRM: Django based CRM system 
 
-CRM system for keeping records of customers and service center orders
+CRM system for keeping records of customers and orders
 
 ## Installation and Usage
 
