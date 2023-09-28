@@ -28,9 +28,16 @@ Here's how to get the project up and running on your local machine for developme
 
     pythot3 -m pip install -r requirements.txt
   <li>Create PostgreSQL database adn configure connection</li>
+  <li>Make migrations and migrate</li>
+  
+    cd dscrm_service
+    python3 manage.py makemigrations
+    python3 manage.py migrate
   <li>Run the application:</li>
 
-    cd dscrm_service
     python3 manage.py runserver
 </ol>
+
+Your application should now be running at `http://localhost:8000`.
+
 
