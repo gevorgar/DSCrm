@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 
@@ -43,7 +43,7 @@ def create_order(request):
             device = Device.objects.create(group=device_group, brand=device_brand, model=device_model, serial_number=device_serial)
             order_description = form.cleaned_data['order_description']
             price = form.cleaned_data['price']
-            order = Order.objects.create(client=client, device=device, order_description=order_description, order_status='open', price=price)
+            Order.objects.create(client=client, device=device, order_description=order_description, order_status='open', price=price)
             return HttpResponseRedirect('/orders/')
     else:
         form = OrderForm
