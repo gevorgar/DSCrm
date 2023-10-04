@@ -60,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'dscrm_service.custom_middleware.RequestTimeMiddleware'
 ]
 
 ROOT_URLCONF = 'dscrm_service.urls'
