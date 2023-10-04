@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import *
+from .views import OrderList, create_order, ShowOrder, OrderUpdate, OrderDelete
 
 urlpatterns = [
     path('', OrderList.as_view(), name='orders'),

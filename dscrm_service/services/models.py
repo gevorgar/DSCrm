@@ -2,6 +2,7 @@ from django.db import models
 
 from orders.models import Order
 
+
 class Service(models.Model):
     """Услуга"""
 
@@ -16,8 +17,8 @@ class Service(models.Model):
     def __str__(self):
         return f"{self.name}"
 
-class ServiceItem(models.Model):
 
+class ServiceItem(models.Model):
     """Добавляемые услуги"""
 
     class Meta():
