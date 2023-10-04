@@ -1,9 +1,8 @@
 from django.views.generic import ListView, DetailView, CreateView
 from django.urls import reverse_lazy
 
-from .forms import ClientCreateForm
-from .models import Client
-
+from .models import *
+from .forms import *
 class ClientList(ListView):
     model = Client
     template_name = 'clients/clients.html'

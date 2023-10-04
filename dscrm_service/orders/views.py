@@ -1,7 +1,7 @@
-from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
+from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from .forms import OrderForm, OrderUpdateForm
 from .models import Order, Client, Device
@@ -29,6 +29,7 @@ class CreateOrder(CreateView):
     extra_context = {'title': 'Создание Заявки'}
     success_url = reverse_lazy('orders')
 
+
 def create_order(request):
     if request.method == 'POST':
         form = OrderForm(request.POST)
@@ -41,10 +42,12 @@ def create_order(request):
             device_brand = form.cleaned_data['device_brand']
             device_model = form.cleaned_data['device_model']
             device_serial = form.cleaned_data['device_serial']
-            device = Device.objects.create(group=device_group, brand=device_brand, model=device_model, serial_number=device_serial)
+            device = Device.objects.create(group=device_group, brand=device_brand, model=device_model,
+                                           serial_number=device_serial)
             order_description = form.cleaned_data['order_description']
             price = form.cleaned_data['price']
-            order = Order.objects.create(client=client, device=device, order_description=order_description, order_status='open', price=price)
+            Order.objects.create(client=client, device=device, order_description=order_description, order_status='open',
+                                 price=price)
             return HttpResponseRedirect('/orders/')
     else:
         form = OrderForm
@@ -58,6 +61,7 @@ class OrderUpdate(UpdateView):
     form_class = OrderUpdateForm
     # fields = ['client', 'device', 'order_description', 'order_status', 'price', 'services']
     success_url = reverse_lazy('orders')
+
 
 class OrderDelete(DeleteView):
     model = Order
