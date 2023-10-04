@@ -40,4 +40,6 @@ Here's how to get the project up and running on your local machine for developme
 
 Your application should now be running at `http://localhost:8000`.
 
+<h3>Use flack8:</h3>
 
+    flake8 
