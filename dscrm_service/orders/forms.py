@@ -7,7 +7,7 @@ from orders.models import Order
 class OrderUpdateForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ('client', 'device', 'order_description', 'price')
+        fields = ('client', 'device', 'order_description', 'price', 'order_status')
         widgets = {
             'order_description': forms.TextInput(attrs={'class': 'form-control', 'type': 'text'}),
             'price': forms.NumberInput(attrs={'class': 'form-control', 'type': 'text'}),
