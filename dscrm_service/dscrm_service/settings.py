@@ -141,22 +141,26 @@ LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'formatters':{
-        'main_format': {
+        'main_formatter': {
             'format': '{asctime} - {levelname} - {module} - {message}',
             'style': '{',
         }
     },
     'handlers': {
+        'console':{
+            'class': 'logging.StreamHandler',
+            'formatter': 'main_formatter'
+        },
         'file': {
             'level': 'WARNING',
             'class': 'logging.FileHandler',
             'filename': BASE_DIR / 'warning.log',
-            'formatter': 'main_format'
+            'formatter': 'main_formatter'
         },
     },
     'loggers': {
         'main': {
-            'handlers': ['file'],
+            'handlers': ['file', 'console'],
             'level': 'DEBUG',
             'propagate': True,
         },

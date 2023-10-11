@@ -52,7 +52,7 @@ def create_order(request):
             price = form.cleaned_data['price']
             Order.objects.create(client=client, device=device, order_description=order_description, order_status='open',
                                  price=price)
-            logger.warning(f'Order for client: "{client_name}" have been created')
+            logger.info(f'Order for client: "{client_name}" have been created')
             return HttpResponseRedirect('/orders/')
     else:
         form = OrderForm
