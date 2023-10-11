@@ -1,3 +1,5 @@
+import logging
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -6,6 +8,8 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .forms import OrderForm, OrderUpdateForm
 from .models import Order, Client, Device
 
+
+logger = logging.getLogger('main')
 
 class OrderList(ListView):
     model = Order
@@ -48,6 +52,7 @@ def create_order(request):
             price = form.cleaned_data['price']
             Order.objects.create(client=client, device=device, order_description=order_description, order_status='open',
                                  price=price)
+            logger.info(f'Order for client: "{client_name}" have been created')
             return HttpResponseRedirect('/orders/')
     else:
         form = OrderForm
